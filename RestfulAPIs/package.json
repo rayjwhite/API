@@ -1,0 +1,10 @@
+{
+  "name": "RestfulAPIs",
+  "version": "0.0.0",
+  "description": "RestfulAPIs",
+  "main": "app.js",
+  "author": {
+    "name": "J",
+    "email": ""
+  }
+}
