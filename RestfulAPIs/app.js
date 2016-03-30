@@ -16,7 +16,7 @@ var server = app.listen(port, function () {
 var mongojs = require('mongojs');
 var db = mongojs(process.env.MONGO_URI);
 
-db.on('err', function (err) {
+db.on('error', function (err) {
     console.log('database error while connecting to '.concat(process.env.MONGO_URI), err);
 });
 db.on('connect', function () {
@@ -30,6 +30,8 @@ var mongoCB = function (err) {
     if (err)
         console.log(err);
 };
+
+// Open a connection to the database
 db._getConnection(mongoCB);
 
 
@@ -37,16 +39,17 @@ var member =
  {
     username: "rayjwhite",
     firstname: "Ray",
-    lastname: "White"
+    lastname: "White",
+    email: "raymond.john.white@gmail.com"
 };
 
 var mongoCB = function (err) {
     if (err)
         console.log(err);
+    // Close the database now that we are finished with it
+    db.close();
 };
 
-db.collection("MyMembers").save(member, mongoCB);
-console.log("Completed saving to MyMembers");
-
-
-db.close();
+//Create and/or add data to the Members collection
+db.collection("Members").save(member, mongoCB);
+console.log("Completed saving to Members");
