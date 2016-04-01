@@ -39,6 +39,23 @@ var appRouter = function (app) {
         // Send back to the caller
         res.status(res.statusCode).send(member);
     });
+
+    app.post(BASE_ROUTE + "/group", function (req, res) {
+        // Connect to mongodb and raise error log error if it can't connect
+        var Dbase = require("../common/dbase.js");
+        dbase = new Dbase();
+        // Get our payload to save to the database  
+        var group = req.body;
+        // Callback for our db calls
+        var mongoCB = function (err) {
+            if (err)
+                console.log(err);
+        };
+        // Create and/or add data to the collection passed
+        dbase.Save("Group", group, mongoCB)
+        // Send back to the caller
+        res.status(res.statusCode).send(group);
+    });
 }
 
 module.exports = appRouter;
