@@ -17,6 +17,7 @@
     "jsonpath":"~0.2.2",
     "aws-lib": "0.3.0",
     "q": "latest",
-    "request": "2.54.0"
+    "request": "2.54.0",
+    "express-xml-bodyparser": "5.6.0"
   }
 }
