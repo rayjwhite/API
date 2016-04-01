@@ -27,30 +27,16 @@ var appRouter = function (app) {
         // Connect to mongodb and raise error log error if it can't connect
         var db = require("../common/db.js");
         // Build our member payload to save to the database  
-        // todo: pass the payload in and parse it
-        var member = 
-        {
-            timestamp: new Date(),
-            username: "rayjwhite",
-            firstname: "Ray",
-            lastname: "White",
-            email: "raymond.john.white@gmail.com",
-            phone: "704-464-6079",
-            address: "11229 Arlen Park Drive",
-            city: "Huntersville",
-            state: "NC"
-        };
-        
+        var member = req.body;
+        // Callback for out db calls
         var mongoCB = function (err) {
             if (err)
                 console.log(err);
         };
-        
-        //Create and/or add data to the Members collection
+        // Create and/or add data to the Members collection
         db.mongoSave("Member", member, mongoCB)
         console.log("Completed saving to Member");
-        
-        //Send back to the caller
+        // Send back to the caller
         res.status(res.statusCode).send("OK");
     });
 }
