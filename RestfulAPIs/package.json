@@ -4,7 +4,19 @@
   "description": "RestfulAPIs",
   "main": "app.js",
   "author": {
-    "name": "J",
-    "email": ""
+    "name": "Raymond J White III",
+    "email": "Raymond.John.White@gmail.com"
+  },
+  "dependencies": {
+    "debug": "~2.2.0",
+    "collections": "^1.2.4",
+    "mongojs": "^2.3.0",
+    "moment": "~2.10.4",
+    "xmldom": "~0.1.19",
+    "js-htmlencode": "~0.1.0",
+    "jsonpath":"~0.2.2",
+    "aws-lib": "0.3.0",
+    "q": "latest",
+    "request": "2.54.0"
   }
 }
