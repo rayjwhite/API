@@ -4,6 +4,7 @@
 
 module.exports = {
     
+    // Aggreage the data passed
     mongoAggregate: function mongoAggregate(collection, pipeline, callback) {
         var cb = function (err, docs) {
             if (callback) {
@@ -14,7 +15,7 @@ module.exports = {
         db.collection(collection).aggregate(pipeline, cb);
     },
     
-    //Mongo Routines
+    // Query for multiples
     mongoQuery: function mongoQuery(collection, query, fields, sort, callback) {
         
         var mongoCB = function (err, docs) {
@@ -25,7 +26,7 @@ module.exports = {
 
     },
     
-    //Mongo Routines
+    // Query for a single record
     mongoQuerySingle: function mongoQuerySingle(collection, query, fields, callback) {
         
         db.collection(collection).findOne(query, fields, function (err, doc) {
@@ -34,6 +35,7 @@ module.exports = {
 
     },
     
+    // Save the passed data to the specified collection
     mongoSave: function mongoSave(collection, json, callback) {
         
         var mongoCB = function (err, docs) {
@@ -42,8 +44,9 @@ module.exports = {
         
         db.collection(collection).save(json, mongoCB);
 
-    }
+    },
 };
+
 
 // Connect to mongodb and raise and/or log the error if it can't connect
 var mongojs = require('mongojs');
