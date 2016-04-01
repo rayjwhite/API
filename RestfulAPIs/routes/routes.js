@@ -15,11 +15,11 @@ var appRouter = function (app) {
     });
     // Extract the PDF and fieldd from the Mismo file
     app.post(BASE_ROUTE + '/extract', function (req, res) {
-        var AppraisalController = require('../controllers/AppraisalExtractor.js');
-        var appraisalController = new AppraisalController();
-        appraisalController.GetAppraisalData();
-        res.status(res.statusCode).send("OK");
-        console.log("returning next after extract process");
+        var MISMODocumentExtractor = require('../controllers/MISMODocumentExtractor.js');
+        var mISMODocumentExtractor = new MISMODocumentExtractor();
+        mISMODocumentExtractor.ExtractPDF(req.body);
+        res.status(res.statusCode).send({Message: "OK"});
+        console.log("file was extracted");
         documentController = null;
     });
     
