@@ -37,7 +37,7 @@ var appRouter = function (app) {
         db.mongoSave("Member", member, mongoCB)
         console.log("Completed saving to Member");
         // Send back to the caller
-        res.status(res.statusCode).send("OK");
+        res.status(res.statusCode).send(member);
     });
 }
 
