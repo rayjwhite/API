@@ -58,14 +58,15 @@ MONGO_URI=localhost
   <ItemGroup>
     <Compile Include="common\db.js" />
     <Compile Include="common\logger.js" />
-    <Compile Include="controllers\AppraisalETL.js" />
+    <Compile Include="controllers\AppraisalExtractor.js" />
     <Compile Include="controllers\document.js" />
     <Compile Include="lib\AppraisalValidator.js" />
     <Compile Include="models\AppraisalETL.js" />
     <Compile Include="models\document.js" />
+    <Compile Include="routes\api.js" />
     <Compile Include="routes\index.js" />
-    <Compile Include="routes\routes.js" />
     <Compile Include="app.js" />
+    <Compile Include="routes\routes.js" />
     <Compile Include="server.js" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
