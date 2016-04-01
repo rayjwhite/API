@@ -80,7 +80,7 @@ var appRouter = function (app) {
         
         // Build our member payload to save to the database
         var member = 
- {
+        {
             timestamp: new Date(),
             username: "rayjwhite",
             firstname: "Ray",
