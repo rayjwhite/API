@@ -11,18 +11,16 @@ var appRouter = function (app) {
         documentController.ProcessFileData(req.body);
         res.status(res.statusCode).send("OK");
         console.log("returning next after document process");
-        documentController = null;
     });
     // Extract the PDF and fieldd from the Mismo file
     app.post(BASE_ROUTE + '/extract', function (req, res) {
         var MISMODocumentExtractor = require('../controllers/MISMODocumentExtractor.js');
         var mISMODocumentExtractor = new MISMODocumentExtractor();
-        mISMODocumentExtractor.ExtractPDF(req.body);
-        res.status(res.statusCode).send({Message: "OK"});
-        console.log("file was extracted");
-        documentController = null;
+        // Present the user to save the PDF that was extracted
+        res.writeHead(200, { 'Content-Type': 'application/pdf' });
+        res.end(mISMODocumentExtractor.ExtractPDF(req.body));
     });
-    
+    // Add members to mongo db
     app.post(BASE_ROUTE + "/member", function (req, res) {
         // Connect to mongodb and raise error log error if it can't connect
         var db = require("../common/db.js");
@@ -39,7 +37,7 @@ var appRouter = function (app) {
         // Send back to the caller
         res.status(res.statusCode).send(member);
     });
-
+    // Add groups to mongo db
     app.post(BASE_ROUTE + "/group", function (req, res) {
         // Connect to mongodb and raise error log error if it can't connect
         var Dbase = require("../common/dbase.js");
