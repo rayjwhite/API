@@ -2,9 +2,13 @@
 * Created by rwhite on 4/01/2016.
 */
 
+// Member variables
+var Logger = require("./logger.js");
+var _logger = new Logger();
+
 /** Constructor **/
 function dbase() {
-
+   
 }
 
 /**
@@ -21,14 +25,17 @@ dbase.prototype.Save = function (collection, data) {
     // Events for db
     db.on('error', function (err) {
         console.log('database error while connecting to '.concat(process.env.MONGO_URI), err);
+        _logger.Log(_logger.LogEnum.ERROR, 'database error while connecting to '.concat(process.env.MONGO_URI).concat(err));
     });
     db.on('connect', function () {
         console.log('database '.concat(process.env.MONGO_URI).concat(' connected'));
+        _logger.Log(_logger.LogEnum.INFO, 'database '.concat(process.env.MONGO_URI).concat(' connected'));
     });
     db.on('close', function () {
         console.log('database '.concat(process.env.MONGO_URI).concat(' closed'));
+        _logger.Log(_logger.LogEnum.INFO, 'database '.concat(process.env.MONGO_URI).concat(' closed'));
     });
-    
+        
     // Callback for MongoDB connection
     var mongoCB = function (err) {
         if (err)
