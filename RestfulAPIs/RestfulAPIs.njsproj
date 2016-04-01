@@ -57,6 +57,7 @@ MONGO_URI=localhost
   </ItemGroup>
   <ItemGroup>
     <Compile Include="common\db.js" />
+    <Compile Include="common\dbase.js" />
     <Compile Include="common\logger.js" />
     <Compile Include="controllers\AppraisalExtractor.js" />
     <Compile Include="controllers\document.js" />
